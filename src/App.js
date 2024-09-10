@@ -1,24 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './index.css'; 
+import Sidebar from './Components/Sidebar';
+import Header from './Components/Header';
+import MainContent from './Components/MainContent';
+import Mail from './Components/Mail'; // Ensure these components are correctly defined
+import EmailReply from './Components/EmailReply';
+import Login from './Components/Login';
+import Navbar from "./Components/Navbar"
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  // <>
+  //   <Navbar />
+  //   <Login />
+  //   </>
+  <>
+    <Router>
+      <div className="App flex h-screen">
+        {/* Sidebar */}
+        <Sidebar />
+       
+        <div className="flex-1 flex flex-col">
+          {/* Header */}
+          <Header />
+
+          {/* Routing */}
+          <div className="flex-1 flex justify-center items-center">
+            <Routes>
+              <Route path="/" element={<MainContent />} />
+              <Route path="/friends" element={<Mail />} />
+              <Route path="/envelope" element={<Mail />} />
+              <Route path="/plane" element={<EmailReply />} />
+              <Route path="/Mail" element={<Mail />} />
+              <Route path="/chart" element={<Mail />} />
+            </Routes>
+          </div>
+        </div>
+      </div>
+    </Router>
+    </>
   );
 }
 
