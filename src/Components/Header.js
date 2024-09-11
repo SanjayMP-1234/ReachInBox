@@ -2,7 +2,7 @@ import React from 'react';
 import { useState,useEffect } from 'react';
 import { RiArrowDropDownLine } from "react-icons/ri";
 const Header = () => {
-          const [isDarkMode, setIsDarkMode] = useState(false);
+          const [isDarkMode, setIsDarkMode] = useState(true);
 
           // Toggle dark mode
           const toggleDarkMode = () => {
@@ -19,9 +19,9 @@ const Header = () => {
           }, [isDarkMode]);
         
   return (
-          <div className="bg-gray-800 text-white px-6 py-4 flex justify-between items-center">
+          <div className="dark:bg-gray-800 dark:text-white px-6 py-4 flex justify-between items-center">
           {/* Title */}
-          <h1 className="text-xl font-semibold">Onebox</h1>
+          <h1 className="text-xl   font-semibold">Onebox</h1>
     
           {/* Toggle Dark Mode */}
           <div className="flex items-center space-x-4">

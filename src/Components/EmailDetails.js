@@ -1,62 +1,78 @@
-import React, { useState } from 'react';
-function EmailDetails() {
-  const [isReplyOpen, setIsReplyOpen] = useState(false); // State to manage the visibility of the reply box
-
-  // Handle the click event for the Reply button
-  const handleReplyClick = () => {
-    console.log("Reply button clicked");
-    setIsReplyOpen(true); // Set the state to true, showing the reply component
-  };
-
+import React, { useEffect } from "react";
+import { RiArrowDropDownLine } from "react-icons/ri";
+import { BsThreeDots } from "react-icons/bs";
+import { FaReply } from "react-icons/fa";
+import {MdOutlineMarkunreadMailbox } from "react-icons/md";
+import { MdEdit } from "react-icons/md";
+import { MdOutlinePersonRemoveAlt1 } from "react-icons/md";
+import { FaRegClock } from "react-icons/fa";
+import { MdDeleteOutline } from "react-icons/md";
+import { RxDotFilled } from "react-icons/rx";
+import EmailCard from "./EmailCard";
+const EmailDetails = ({ handleReplyClick, replyList,handleDeleteClick,isReplyOpen }) => {
   return (
-    
-    <div className="text-white">
-      {/* Conditionally render the EmailReply component */}
-      {isReplyOpen && <EmailReply />}
-      <h2 className="text-xl font-semibold mb-4">New Product Launch</h2>
-      <div className="mb-4">
-        <p className="text-gray-400">From: jeanne@icloud.com</p>
-        <p className="text-gray-400">To: lennon@jmail.com</p>
-        <p className="text-gray-400">Date: 20 June 2022, 9:16 AM</p>
-      </div>
+    <div className="flex-1 dark:bg-black p-6 w-full bg-white text-black  border-gray-600 border-solid border-x-[1px] dark:text-gray-200">
+      <div className="w-full flex gap-11 mb-6  ">
+        <div className="flex-1">
+          <h1>Orland</h1>
+          <p>ssnjay@gmail.com</p>
+        </div>
+        <div className="flex gap-2 border-gray-800 border-4 justify-center items-center p-3 rounded-lg ">
+          <span>
+            <RxDotFilled />
+          </span>
+          <p>Meeting Completed</p>
+          <RiArrowDropDownLine />
+        </div>
 
-      <div className="mb-4">
-        <p>Hi <strong>{'{FIRST_NAME}'}</strong>,</p>
-        <p>
-          I would like to introduce you to SaaSGrow, a productized design service specifically
-          tailored for SaaS startups. Our aim is to enhance the user experience and boost the visual appeal of your...
-        </p>
-      </div>
+        <div className="relative group inline-block">
+          <div className=" gap-2 border-gray-800 border-4 justify-center items-center p-3 rounded-lg flex  ">
+            <p>Move</p>
+            <RiArrowDropDownLine />
+          </div>
+          <div className="absolute hidden group-hover:block bg-gray-800 text-white w-52 mt-2 rounded shadow-lg">
+            <ul className="py-2">
+              <li className="px-4 py-2 flex  gap-3   items-center hover:bg-gray-700 cursor-pointer">
+                <MdOutlineMarkunreadMailbox />
+                Mark as unread{" "}
+              </li>
+              <li className="px-4 py-2 flex  gap-3   items-center hover:bg-gray-700 cursor-pointer">
+                <MdEdit />
+                Edit lead
+              </li>
+              <li className="px-4 py-2 flex  gap-3   items-center hover:bg-gray-700 cursor-pointer">
+                <MdOutlinePersonRemoveAlt1 />
+                Remove Lead
+              </li>
+              <li className="px-4 py-2 flex  gap-3   items-center hover:bg-gray-700 cursor-pointer">
+                <FaRegClock />
+                Set reminder
+              </li>
+              <li onClick={handleDeleteClick} className="px-4 py-2 flex  gap-3   items-center hover:bg-gray-700 cursor-pointer">
+                <MdDeleteOutline />
+                Delete
+              </li>
+            </ul>
+          </div>
+        </div>
 
-      {/* Reply button with event handler */}
-      <button 
-        onClick={handleReplyClick} 
-        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded"
+        <div className="flex gap-2 w-18 border-gray-800 border-4 justify-center items-center p-3 rounded-lg ">
+          <BsThreeDots />
+        </div>
+      </div>
+      <hr />
+     <EmailCard replyList={replyList} />
+      
+      <button
+        className={isReplyOpen?"hidden":"flex justify-center items-center gap-4 bg-blue-700 p-3 rounded-md w-90 bottom-0 absolute mb-9"}
+        onClick={() => handleReplyClick()}
       >
+        <FaReply />
         Reply
       </button>
 
-      {/* Lead Details */}
-      <div className="mt-8">
-        <h3 className="text-lg font-semibold">Lead Details</h3>
-        <p>Name: Orlando</p>
-        <p>Contact No: +54-9062827869</p>
-        <p>Email ID: orlando@gmail.com</p>
-        <p>LinkedIn: linkedin.com/in/timwadd...</p>
-        <p>Company Name: Reachinbox</p>
-      </div>
 
-      {/* Campaign Details */}
-      <div className="mt-4">
-        <h3 className="text-lg font-semibold">Campaign Name</h3>
-        <p>Step 1: Email Sent (3rd Feb)</p>
-        <p>Step 2: Email Opened (5th Feb)</p>
-      </div>
-
-      {/* Conditionally render the EmailReply component */}
-      {isReplyOpen && <EmailReply />}
     </div>
   );
-}
-
-export default EmailDetails;
+};
+export default EmailDetails

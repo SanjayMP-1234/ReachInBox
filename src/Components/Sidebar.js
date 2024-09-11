@@ -4,20 +4,20 @@ import { FaHome, FaUserFriends, FaEnvelope, FaPaperPlane, FaList, FaChartBar } f
 
 const Sidebar = () => {
   return (
-    <div className="bg-gray-900 h-screen w-16 flex flex-col  items-center py-6">
+    <div className="bg-gray-900  h-screen w-16 flex flex-col  items-center py-6">
       {/* Logo */}
-      <div className="text-white text-3xl font-bold">M</div>
+      <img src={'/Reachin.png'} alt="Email Icon" className="w-1/2 mb-6" />
 
       {/* Icons */}
-      <nav className="space-y-6  mt-12 text-white">
-      <Link className='flex' to="/" aria-label="Home">
+      <nav className="space-y-11  mt-12 text-white">
+      <Link className='flex' to="/Home" aria-label="Home">
           <FaHome size={24} />
         </Link>
         <Link className='flex' to="/friends" aria-label="Friends">
           <FaUserFriends size={24} />
         </Link>
         <Link className='flex' to="/envelope" aria-label="Envelope">
-          <FaEnvelope size={24} />
+          <FaEnvelope  size={24} />
         </Link>
         <Link className='flex' to="/plane" aria-label="Paper Plane">
           <FaPaperPlane size={24} />
@@ -39,7 +39,7 @@ const Sidebar = () => {
       </nav>
 
       {/* User Profile */}
-      <div className="text-white absolute bottom-0 mb-5 bg-green-500 rounded-full w-12 h-12 flex items-center justify-center text-xl">AS</div>
+      <button onClick={console.log("Aro")} className="text-white absolute bottom-0 mb-5 bg-green-500 rounded-full w-12 h-12 flex items-center justify-center text-xl">AS</button>
     </div>
   );
 };
