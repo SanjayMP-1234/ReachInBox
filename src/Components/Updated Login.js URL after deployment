@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 const Login = () => {
   function handleClick() {
     window.location.replace(
-      "https://hiring.reachinbox.xyz/api/v1/auth/google-login?redirect_to=http://reachin-box-eight.vercel.app/Home"
+      "https://hiring.reachinbox.xyz/api/v1/auth/google-login?redirect_to=https://reachin-box-eight.vercel.app/Home"
     );
   }
 
